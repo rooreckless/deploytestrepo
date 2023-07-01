@@ -6,10 +6,10 @@ jobs:
     name: deploy gitpull
     runs-on: ubuntu-latest
     steps:
-      - run: pwd
-      - run: ls
-      - run: sshpass -p ${{ secrets.SSH_PASSPHRASE }} ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} -i ${{ secrets.SSH_PRIVATE_KEY }} && git pull origin main"
-      - run: cd ~/deploytestrepo
-      - run: git pull origin main
-      - run: cd deploytestrepo/html
-      - run: python3 -m http.server 8080
+    - run: pwd
+    - run: ls
+    - run: sshpass -p ${{ secrets.SSH_PASSPHRASE }} ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} -i ${{ secrets.SSH_PRIVATE_KEY }} && git pull origin main"
+    - run: cd ~/deploytestrepo
+    - run: git pull origin main
+    - run: cd deploytestrepo/html
+    - run: python3 -m http.server 8080
