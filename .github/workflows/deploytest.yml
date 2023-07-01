@@ -2,15 +2,17 @@ name: deploytest workflow
 on: push
 
 jobs:
-  job1:
-    name: deploy gitpull
+  build:
     runs-on: ubuntu-latest
     steps:
-    - run: pwd
-    - run: ls
-    - run: sshpass -V
-    - run: sshpass -p ${{ secrets.SSH_PASSPHRASE }} ssh -oStrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} -i ${{ secrets.SSH_PRIVATE_KEY }} && git pull origin main"
-    - run: cd ~/deploytestrepo
-    - run: git pull origin main
-    - run: cd deploytestrepo/html
-    - run: python3 -m http.server 8080
+      - name: deploy gitpull
+        uses: appleboy/ssh-action@master    #使用するアクション（sshでサーバに接続）
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          script: |     #サーバで実行されるコマンド（サーバ内で動かせるコマンドなら大体できるはず…なので色々やってみると吉？）
+            cd ~/deploytestrepo 
+            git pull origin main
