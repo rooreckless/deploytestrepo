@@ -8,6 +8,7 @@ jobs:
     steps:
     - run: pwd
     - run: ls
+    - run: sshpass -V
     - run: sshpass -p ${{ secrets.SSH_PASSPHRASE }} ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} -i ${{ secrets.SSH_PRIVATE_KEY }} && git pull origin main"
     - run: cd ~/deploytestrepo
     - run: git pull origin main
