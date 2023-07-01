@@ -1,0 +1,22 @@
+name: deploytest workflow
+on: push
+
+jobs:
+  job1:
+    name: deploy gitpull
+    runs-on: ubuntu-latest
+    steps:
+      - name: ssh deploy
+      #--
+        uses: appleboy/ssh-action@master # １
+        with: # ２ アクションの入力パラメータを指定
+            host: ${{ secrets.SSH_HOST }} # ホスト名
+            username: ${{ secrets.SSH_USERNAME }} # SSH ユーザ名
+            key: ${{ secrets.SSH_PRIVATE_KEY }} # 秘密鍵の内容
+            port: ${{ secrets.SSH_PORT }} # ポート番号
+            script: |
+              pwd
+              cd ~/deploytestrepo
+              git pull origin main
+              cd deploytestrepo/html
+              python3 -m http.server 8080
