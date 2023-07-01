@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: ssh deploy
       #--
-        run: |
+      - run: |
           pwd
           ls
           sshpass -p ${{ secrets.SSH_PASSPHRASE }} ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} -i ${{ secrets.SSH_PRIVATE_KEY }} && git pull origin main"
