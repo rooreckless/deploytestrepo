@@ -16,7 +16,6 @@ jobs:
             passphrase: ${{ secrets.SSH_PASSPHRASE }} # 秘密鍵のパスフレーズ
             port: ${{ secrets.SSH_PORT }} # ポート番号
             script: |
-              pwd
               cd ~/deploytestrepo
               git pull origin main
               cd deploytestrepo/html
