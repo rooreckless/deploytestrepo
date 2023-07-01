@@ -9,7 +9,6 @@ jobs:
       - name: ssh deploy
       #--
         run: |
-          sudo apt-get install sshpass
           pwd
           cd ~/deploytestrepo
           sshpass -p ${{ secrets.SSH_PASSPHRASE }} ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} -i ${{ secrets.SSH_PRIVATE_KEY }} && git pull origin main"
