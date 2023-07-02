@@ -14,7 +14,7 @@ jobs:
           host: 43.207.0.24
           username: ec2-user
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          passphrase: july31st
           script: |
             cd deploytestrepo
             git pull origin main
