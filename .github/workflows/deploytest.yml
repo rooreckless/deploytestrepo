@@ -14,4 +14,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |     #サーバで実行されるコマンド（サーバ内で動かせるコマンドなら大体できるはず…なので色々やってみると吉？）
-            whoami
+            pwd
+            ls
