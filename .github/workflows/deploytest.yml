@@ -19,4 +19,4 @@ jobs:
             ls
             cd deploytestrepo
             ls
-            git pull origin main
+            git remote -v
