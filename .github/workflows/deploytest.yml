@@ -6,6 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: deploy gitpull
+        run: |
+          ${{ secrets.SSH_HOST }}
         uses: appleboy/ssh-action@master    #使用するアクション（sshでサーバに接続）
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -14,5 +16,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |     #サーバで実行されるコマンド（サーバ内で動かせるコマンドなら大体できるはず…なので色々やってみると吉？）
-            cd ~/deploytestrepo 
-            git pull origin main
+            script: whoami
