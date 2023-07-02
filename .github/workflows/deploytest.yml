@@ -5,19 +5,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: deploy gitpull
-        uses: appleboy/ssh-action@master    #使用するアクション（sshでサーバに接続）
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          port: ${{ secrets.SSH_PORT }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          script: |     #サーバで実行されるコマンド（サーバ内で動かせるコマンドなら大体できるはず…なので色々やってみると吉？）
-            whoami
-            pwd
-            ls
-            cd deploytestrepo
-            ls
-            git remote -v
-            ssh -T git@github.com
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to EC2
+        run: |
+          whoami
+          pwd
+          ls
+          ssh-keyscan -H 43.207.0.24 >> ~/.ssh/known_hosts
+          ssh -i ~/.ssh/dp_bastion -T ec2-user@43.207.0.24
+          whoami
+          pwd
+          ls
+          cd deploytestrepo
+          git pull origin main
