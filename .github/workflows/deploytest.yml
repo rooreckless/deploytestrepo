@@ -6,8 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: deploy gitpull
-        run: |
-          ${{ secrets.SSH_HOST }}
         uses: appleboy/ssh-action@master    #使用するアクション（sshでサーバに接続）
         with:
           host: ${{ secrets.SSH_HOST }}
