@@ -18,5 +18,7 @@ jobs:
           echo "----"
           echo $HOME
           echo "----"
+          echo ~
+          echo "----"
           ssh-keyscan -H 43.207.0.24 >> $HOME/.ssh/known_hosts
           ssh -i ~/.ssh/dp_bastion -T ec2-user@43.207.0.24 "whoami && pwd && ls && cd deploytestrepo && git pull origin main"
