@@ -20,3 +20,5 @@ jobs:
             cd deploytestrepo
             ls
             git remote -v
+            ssh -T git@github.com
+            git pull origin main
