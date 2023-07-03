@@ -20,5 +20,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_PASS }}
           script: |
+            echo ${{ secrets.SSH_PORT }}
             cd deploytestrepo
             git pull origin main
