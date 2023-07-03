@@ -14,15 +14,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           name: id_rsa
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
-      - name: deploy
+      - name: SSH to EC2 instance and git clone
         run: |
-          pwd
-          echo "---"
-          ls
-          echo "---"
-          git clone git@github.com:rooreckless/deploytestrepo.git
-          echo "---"
-          pwd
-          echo "---"
-          ls
-          echo "-----"
+          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_USERNAME }}@{{ secrets.SSH_HOST }} 'git clone git@github.com:rooreckless/deploytestrepo.git'
