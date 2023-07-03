@@ -14,3 +14,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           name: id_rsa
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
+      - name: deploy
+        run: |
+          cd deploytest
+          git pull origin main
