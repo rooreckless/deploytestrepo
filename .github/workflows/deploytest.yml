@@ -14,7 +14,7 @@ jobs:
       - name: Configure SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PRIVATE_KEY }}"  > ~/.ssh/id_rsa
           chmod 777 ~/.ssh/id_rsa
           ssh-keyscan -H 43.207.0.24 >> ~/.ssh/known_hosts
 
