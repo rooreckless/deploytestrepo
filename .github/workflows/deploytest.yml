@@ -20,5 +20,4 @@ jobs:
           echo "---"
           ls
           echo "---"
-          cd deploytest
-          git pull origin main
+          git clone git@github.com:rooreckless/deploytestrepo.git
