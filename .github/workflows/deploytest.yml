@@ -22,5 +22,3 @@ jobs:
           script: |
             cd deploytestrepo
             git pull origin main
-            cd html
-            nohup python3 -m http.server 8080 >/dev/null 2>&1 &
