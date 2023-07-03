@@ -15,4 +15,3 @@ jobs:
           script: |
             cd ~/deploytestrepo
             git pull origin main
-            
