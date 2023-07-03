@@ -5,16 +5,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Deploy to EC2
+      - name: Deploy
         uses: appleboy/ssh-action@master
         with:
-          host: 43.207.0.24
-          username: ec2-user
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: july31st
           script: |
-            cd deploytestrepo
+            cd ~/deploytestrepo
             git pull origin main
