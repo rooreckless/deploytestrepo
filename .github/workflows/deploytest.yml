@@ -16,5 +16,9 @@ jobs:
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
       - name: deploy
         run: |
+          pwd
+          echo "---"
+          ls
+          echo "---"
           cd deploytest
           git pull origin main
