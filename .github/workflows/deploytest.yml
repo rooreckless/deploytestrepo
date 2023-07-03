@@ -21,3 +21,4 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh-agent bash -c 'ssh-add ~/.ssh/id_rsa; ssh ec2-user@43.207.0.24 "git pull origin main"'
+          
