@@ -21,5 +21,6 @@ jobs:
           passphrase: ${{ secrets.SSH_PASS }}
           script: |
             echo ${{ vars.TESTVALUE }}
+            ssh -T git@github.com
             cd deploytestrepo
             git pull origin main
