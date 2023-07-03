@@ -14,11 +14,10 @@ jobs:
       - name: Configure SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/dp_bastion
+          chmod 600 ~/.ssh/dp_bastion
           ssh-keyscan -H 43.207.0.24 >> ~/.ssh/known_hosts
 
       - name: Deploy to EC2
         run: |
-          ssh-agent bash -c 'ssh-add ~/.ssh/id_rsa; ssh ec2-user@43.207.0.24 "git pull origin main"'
-          
+          ssh -i ~/.ssh/dp_bastion ec2-user@43.207.0.24 'git pull origin main'
