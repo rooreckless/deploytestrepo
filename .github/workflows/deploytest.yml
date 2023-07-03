@@ -21,3 +21,4 @@ jobs:
           passphrase: ${{ secrets.SSH_PASS }}
           script: |
             git clone git@github.com:rooreckless/deploytestrepo.git
+            
