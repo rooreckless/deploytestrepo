@@ -19,5 +19,3 @@ jobs:
           script: |
             cd deploytestrepo
             git pull origin main
-            cd html
-            python3 -m http.server 8080 &
