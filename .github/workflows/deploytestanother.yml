@@ -11,6 +11,8 @@ jobs:
       - name: Deploy
         run: |
           mkdir -p ~/.ssh
+          ls ~
           touch ~/.ssh/dp_bastion
+          ls ~/.ssh
           echo ${{ vars.SSH_PRIVATE_KEY }} > ~/.ssh/dp_bastion
           cat ~/.ssh/dp_bastion
