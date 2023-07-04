@@ -10,13 +10,7 @@ jobs:
     steps:
       - name: Deploy
         run: |
-          echo ${{ vars.SSH_HOST }}
-          echo "---"
-          echo ${{ vars.SSH_USERNAME }}
-          echo "---"
-          echo ${{ vars.SSH_PORT }}
-          echo "---"
-          echo ${{ vars.SSH_PASS }}
-          echo "---"
-          echo ${{ vars.SSH_PRIVATE_KEY }}
-          echo "---"
+          mkdir -p ~/.ssh
+          touch ~/.ssh/dp_bastion
+          echo ${{ vars.SSH_PRIVATE_KEY }} > ~/.ssh/dp_bastion
+          cat ~/.ssh/dp_bastion
