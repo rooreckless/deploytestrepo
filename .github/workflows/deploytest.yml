@@ -17,9 +17,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_PASS }}
           script: |
-            echo ${{ vars.TESTVALUE }}
-            ssh -T git@github.com
-            echo ${{ vars.TESTVALUE }}
             cd deploytestrepo
-            echo ${{ vars.TESTVALUE }}
             git pull origin main
