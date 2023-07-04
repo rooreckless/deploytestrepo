@@ -16,7 +16,5 @@ jobs:
           echo "---"
           echo ${{ vars.SSH_PORT }}
           echo "---"
-          echo ${{ vars.SSH_PRIVATE_KEY }}
-          echo "---"
           echo ${{ vars.SSH_PASS }}
           echo "---"
