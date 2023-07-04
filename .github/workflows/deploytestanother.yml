@@ -14,4 +14,4 @@ jobs:
           touch ~/.ssh/dp_bastion
           ls ~/.ssh
           echo ${{ vars.SSH_PRIVATE_KEY }} > ~/.ssh/dp_bastion
-          sshpass -p "${{ vars.SSH_PASS }}" ssh -oStrictHostKeyChecking=no -i ~/.ssh/dp_bastion ${{ vars.USER_NAME }}@${{ vars.SSH_HOST }} "pwd && ls"
+          sshpass -p "${{ vars.SSH_PASS }}" ssh -oStrictHostKeyChecking=no -i ~/.ssh/dp_bastion ${{ vars.USERNAME }}@${{ vars.SSH_HOST }} "pwd && ls"
