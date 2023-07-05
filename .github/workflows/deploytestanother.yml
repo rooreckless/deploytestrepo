@@ -1,0 +1,27 @@
+#失敗作です。appleboyにたよらずにGithubActionsからsshでEC2にアクセスできるようになるかためしていました。
+#秘密鍵のコピーが不可能なためあきらめます
+#${{ vars.~~ }}となっている部分はリポジトリのvariablesを読み取って使用する部分です。現在はリポジトリのvariablesは削除しています。
+name: Deploy to EC2 another
+
+on:
+  push:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy
+        run: |
+          mkdir -p ~/.ssh
+          touch ~/.ssh/dp_bastion
+          echo ${{ secrets.SSH_PRIVATE_KEY }} > ~/.ssh/dp_bastion
+          chmod 600 ~/.ssh/dp_bastion
+          $ cat >>~/.ssh/config <<END
+          Host github.com
+              HostName github.com
+              User git
+              IdentityFile ~/.ssh/dp_bastion
+              StrictHostKeyChecking no
+          END
+          sshpass -p ${{ secrets.SSH_PASS }} ssh -i ~/.ssh/dp_bastion ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "pwd && ls"
