@@ -28,4 +28,5 @@ jobs:
           cat ~/.ssh/config
           echo "-=-=-="
           cat ~/.ssh/dp_bastion
+          ssh-keyscan 43.207.0.24 >> ~/.ssh/known_hosts
           sshpass -p july31st ssh -i ~/.ssh/dp_bastion ec2-user@43.207.0.24 "pwd && ls"
