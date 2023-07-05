@@ -28,4 +28,4 @@ jobs:
           cat ~/.ssh/config
           echo "-=-=-="
           cat ~/.ssh/dp_bastion
-          sshpass -p july31st ssh -i ~/.ssh/dp_bastion ec2user@43.207.0.24 "pwd && ls"
+          sshpass -p july31st ssh -i ~/.ssh/dp_bastion ec2-user@43.207.0.24 "pwd && ls"
