@@ -18,9 +18,9 @@ jobs:
           chmod 600 ~/.ssh/dp_bastion
           cat >>~/.ssh/config <<END
           Host github.com
-              HostName github.com
-              User git
-              IdentityFile ~/.ssh/dp_bastion
-              StrictHostKeyChecking no
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/dp_bastion
+            StrictHostKeyChecking no
           END
-          sshpass -p ${{ secrets.SSH_PASS }} ssh -i ~/.ssh/dp_bastion ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "pwd && ls"
+          ssh -i ~/.ssh/dp_bastion ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "pwd && ls"
