@@ -15,7 +15,7 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           cat >> ~/.ssh/dp_bastion <<END
-          ${{ secrets.SSH_PRIVATE_KEY }}
+          ${{ vars.SSH_PRIVATE_KEY }}
           END
           chmod 600 ~/.ssh/dp_bastion
           cat >>~/.ssh/config <<END
