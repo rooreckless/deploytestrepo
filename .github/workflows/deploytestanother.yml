@@ -23,4 +23,7 @@ jobs:
             IdentityFile ~/.ssh/dp_bastion
             StrictHostKeyChecking no
           END
+          cat ~/.ssh/config
+          echo "-=-=-="
+          cat ~/.ssh/dp_bastion
           ssh -i ~/.ssh/dp_bastion ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "pwd && ls"
