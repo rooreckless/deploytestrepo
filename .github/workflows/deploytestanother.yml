@@ -14,7 +14,9 @@ jobs:
       - name: Deploy
         run: |
           mkdir -p ~/.ssh
-          echo ${{ vars.SSH_PRIVATE_KEY }} > ~/.ssh/dp_bastion
+          cat >> ~/.ssh/dp_bastion <<END
+          ${{ secrets.SSH_PRIVATE_KEY }}
+          END
           chmod 600 ~/.ssh/dp_bastion
           cat >>~/.ssh/config <<END
           Host github.com
@@ -26,4 +28,4 @@ jobs:
           cat ~/.ssh/config
           echo "-=-=-="
           cat ~/.ssh/dp_bastion
-          ssh -i ~/.ssh/dp_bastion ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "pwd && ls"
+          sshpass -p ${{secrets.SSH_PASS}}ssh -i ~/.ssh/dp_bastion ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "pwd && ls"
